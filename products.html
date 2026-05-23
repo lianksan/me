@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <script>(function(){var t=localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);})();</script>
+  <title>Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style-typo.css" />
+  <link rel="stylesheet" href="products.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-tabs">
+      <a href="index.html" class="tab h4">About me</a>
+      <a href="cases.html" class="tab h4">Gallery</a>
+      <a href="products.html" class="tab h4 active">Products</a>
+      <a href="materials.html" class="tab h4">Saved</a>
+    </div>
+  </nav>
+
+  <main class="main">
+
+      <!-- iOS applications -->
+      <div class="products-block">
+        <h2 class="h1">iOS applications</h2>
+        <div class="products-grid" data-section="ios"></div>
+      </div>
+
+      <!-- Web services -->
+      <div class="products-block">
+        <h2 class="h1">Web services</h2>
+        <div class="products-grid" data-section="web"></div>
+      </div>
+
+  </main>
+
+  <script src="script.js"></script>
+  <script src="products-data.js"></script>
+  <script src="products-render.js"></script>
+</body>
+</html>

@@ -1,15 +1,27 @@
+// ── Video autoplay (Safari fix) ──
+
+const footerVideo = document.querySelector('.footer-video');
+if (footerVideo) {
+  footerVideo.muted = true;
+  footerVideo.play().catch(() => {});
+}
+
 // ── Email copy ──
+
+const EMAIL = 'p_lenkevich@gmail.com';
 
 const emailBtn = document.getElementById('emailBtn');
 const emailText = document.getElementById('emailText');
 if (emailBtn) {
   emailBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText('p_lenkevich@gmail.com');
+    navigator.clipboard.writeText(EMAIL);
+    emailBtn.style.minWidth = emailBtn.offsetWidth + 'px';
     emailBtn.classList.add('copied');
     emailText.textContent = 'Copied';
     setTimeout(() => {
-      emailText.textContent = 'p_lenkevich@gmail.com';
+      emailText.textContent = EMAIL;
       emailBtn.classList.remove('copied');
+      emailBtn.style.minWidth = '';
     }, 3000);
   });
 }
@@ -30,7 +42,7 @@ function switchTheme() {
 
 const toggle = document.getElementById('themeToggle');
 
-var sunAnim = lottie.loadAnimation({
+const sunAnim = lottie.loadAnimation({
   container: document.getElementById('lottieSun'),
   renderer: 'svg',
   loop: true,
@@ -38,7 +50,7 @@ var sunAnim = lottie.loadAnimation({
   animationData: {"v":"5.12.1","fr":30,"ip":0,"op":60,"w":80,"h":80,"nm":"Sun","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"Rays 2","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[45]},{"t":60,"s":[135]}],"ix":10},"p":{"a":0,"k":[40,40,0],"ix":2,"l":2},"a":{"a":0,"k":[40,40,0],"ix":1,"l":2},"s":{"a":0,"k":[95,95,100],"ix":6,"l":2}},"ao":0,"shapes":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,12.046]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,10]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,12.046]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,10]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,12.046]],"c":false}]}],"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ind":1,"ty":"sh","ix":2,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[12.046,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[10,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[12.046,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[10,40.005]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[12.046,40.005]],"c":false}]}],"ix":2},"nm":"Path 2","mn":"ADBE Vector Shape - Group","hd":false},{"ind":2,"ty":"sh","ix":3,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,67.954],[39.995,58]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,70],[39.995,58]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,67.954],[39.995,58]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,70],[39.995,58]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,67.954],[39.995,58]],"c":false}]}],"ix":2},"nm":"Path 3","mn":"ADBE Vector Shape - Group","hd":false},{"ind":3,"ty":"sh","ix":4,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[67.954,40.005],[58,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[70,40.005],[58,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[67.954,40.005],[58,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[70,40.005],[58,40.005]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[67.954,40.005],[58,40.005]],"c":false}]}],"ix":2},"nm":"Path 4","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"mm","mm":1,"nm":"Merge Paths 1","mn":"ADBE Vector Filter - Merge","hd":false},{"ty":"st","c":{"a":0,"k":[0.933333333333,0.933333333333,0.933333333333,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":2,"ix":5},"lc":2,"lj":1,"ml":4,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false}],"ip":0,"op":90,"st":0,"ct":1,"bm":0},{"ddd":0,"ind":2,"ty":4,"nm":"Rays 1","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"t":60,"s":[90]}],"ix":10},"p":{"a":0,"k":[40,40,0],"ix":2,"l":2},"a":{"a":0,"k":[40,40,0],"ix":1,"l":2},"s":{"a":0,"k":[100,100,100],"ix":6,"l":2}},"ao":0,"shapes":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,10]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,12.046]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,10]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,12.046]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,22],[39.995,10]],"c":false}]}],"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ind":1,"ty":"sh","ix":2,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[10,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[12.046,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[10,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[12.046,40.005]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[22,40.005],[10,40.005]],"c":false}]}],"ix":2},"nm":"Path 2","mn":"ADBE Vector Shape - Group","hd":false},{"ind":2,"ty":"sh","ix":3,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,70],[39.995,58]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,67.954],[39.995,58]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,70],[39.995,58]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,67.954],[39.995,58]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[39.995,70],[39.995,58]],"c":false}]}],"ix":2},"nm":"Path 3","mn":"ADBE Vector Shape - Group","hd":false},{"ind":3,"ty":"sh","ix":4,"ks":{"a":1,"k":[{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":0,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[70,40.005],[58,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":15,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[67.954,40.005],[58,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":30,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[70,40.005],[58,40.005]],"c":false}]},{"i":{"x":0.667,"y":1},"o":{"x":0.333,"y":0},"t":45,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[67.954,40.005],[58,40.005]],"c":false}]},{"t":60,"s":[{"i":[[0,0],[0,0]],"o":[[0,0],[0,0]],"v":[[70,40.005],[58,40.005]],"c":false}]}],"ix":2},"nm":"Path 4","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"mm","mm":1,"nm":"Merge Paths 1","mn":"ADBE Vector Filter - Merge","hd":false},{"ty":"st","c":{"a":0,"k":[0.933333333333,0.933333333333,0.933333333333,1],"ix":3},"o":{"a":0,"k":100,"ix":4},"w":{"a":0,"k":2,"ix":5},"lc":2,"lj":1,"ml":4,"bm":0,"nm":"Stroke 1","mn":"ADBE Vector Graphic - Stroke","hd":false}],"ip":0,"op":90,"st":0,"ct":1,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"Sun.svg","cl":"svg","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[40,40,0],"ix":2,"l":2},"a":{"a":0,"k":[40,40,0],"ix":1,"l":2},"s":{"a":1,"k":[{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":0,"s":[100,100,100]},{"i":{"x":[0.667,0.667,0.667],"y":[1,1,1]},"o":{"x":[0.333,0.333,0.333],"y":[0,0,0]},"t":30,"s":[95,95,100]},{"t":60,"s":[100,100,100]}],"ix":6,"l":2}},"ao":0,"shapes":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-5.523,0],[0,-5.523],[5.523,0],[0,5.523]],"o":[[5.523,0],[0,5.523],[-5.523,0],[0,-5.523]],"v":[[40,30],[50,40],[40,50],[30,40]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0.933333333333,0.933333333333,0.933333333333,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false}],"ip":0,"op":90,"st":0,"ct":1,"bm":0}],"markers":[],"props":{}}
 });
 
-var moonAnim = lottie.loadAnimation({
+const moonAnim = lottie.loadAnimation({
   container: document.getElementById('lottieMoon'),
   renderer: 'svg',
   loop: true,
@@ -47,16 +59,16 @@ var moonAnim = lottie.loadAnimation({
 });
 
 if (toggle) {
-  toggle.addEventListener('mouseenter', function() {
+  toggle.addEventListener('mouseenter', () => {
     sunAnim.play();
     moonAnim.play();
   });
-  toggle.addEventListener('mouseleave', function() {
+  toggle.addEventListener('mouseleave', () => {
     sunAnim.pause();
     moonAnim.pause();
   });
   toggle.addEventListener('click', switchTheme);
-  toggle.addEventListener('keydown', function(e) {
+  toggle.addEventListener('keydown', e => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       switchTheme();
@@ -72,8 +84,8 @@ if (toggle) {
   const icons = document.querySelectorAll('.skill-icon');
   if (!train || !timeline || !icons.length) return;
 
-  const ICON_SIZE = 48;
-  const GAP = 8;
+  const ICON_SIZE = 44;
+  const GAP = 4;
   const SLOT = ICON_SIZE + GAP;
 
   function onScroll() {
@@ -83,16 +95,11 @@ if (toggle) {
     icons.forEach((icon, i) => {
       const topPct = parseFloat(icon.dataset.top) / 100;
       const targetY = timelineRect.top + topPct * timelineRect.height;
-      // Where this icon's slot sits visually in the train
       const slotY = trainRect.top + i * SLOT;
 
-      if (targetY > slotY) {
-        // Target hasn't reached the slot — icon stays at target level
-        icon.style.transform = 'translateY(' + (targetY - slotY) + 'px)';
-      } else {
-        // Target scrolled past — icon locked in the train
-        icon.style.transform = 'translateY(0)';
-      }
+      icon.style.transform = targetY > slotY
+        ? `translateY(${targetY - slotY}px)`
+        : 'translateY(0)';
     });
   }
 
@@ -100,30 +107,4 @@ if (toggle) {
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
 })();
-
-// ── Scroll hint (desktop two-column layout only) ──
-
-if (document.getElementById('about') && window.innerWidth >= 1280) {
-  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-  window.scrollTo(0, scrollable * 0.1);
-
-  setTimeout(() => {
-    const startY = window.scrollY;
-    const duration = 700;
-    const startTime = performance.now();
-
-    function easeInOutCubic(t) {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    function step(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      window.scrollTo(0, startY * (1 - easeInOutCubic(progress)));
-      if (progress < 1) requestAnimationFrame(step);
-    }
-
-    requestAnimationFrame(step);
-  }, 0);
-}
 

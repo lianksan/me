@@ -1,0 +1,268 @@
+/* ── PRODUCTS PAGE ── */
+
+.products-block {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ── PRODUCT CARD ── */
+
+.pcard {
+  width: 100%;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  corner-shape: smooth; /* squircle */
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background-color 0s, color 0s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pcard:hover {
+  background-color: var(--surface-inv);
+  color: var(--text-inv);
+}
+
+.pcard__top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+}
+
+.pcard__icon {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  corner-shape: smooth;
+  background: var(--surface);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.pcard:hover .pcard__icon {
+  background: var(--surface-inv);
+}
+
+.pcard__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.pcard__text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pcard__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 30px;
+  letter-spacing: -0.52px;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--text) 30%, transparent);
+  text-underline-offset: 4px;
+}
+
+.pcard:hover .pcard__name {
+  text-decoration-color: var(--text-inv);
+}
+
+.pcard:hover .pcard__shots .shot {
+  outline-color: var(--surface-2-inv);
+}
+
+.pcard__name svg {
+  flex-shrink: 0;
+  transition: transform 0.1s ease-in-out;
+}
+
+.pcard:hover .pcard__name svg {
+  transform: translate(2px, -2px);
+}
+
+.pcard__desc {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Screenshots area */
+
+.pcard__shots {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+
+.pcard__shots .shot {
+  position: absolute;
+  width: 220px;
+  height: 476px;
+  border-radius: var(--radius-sm);
+  corner-shape: smooth;
+  outline: 6px solid var(--surface-2);
+  transition: transform 0.55s cubic-bezier(0.34, 1.1, 0.64, 1);
+}
+
+/* ── Layout A — 1 shot, centred ── */
+
+.pcard__shots--a .shot--1 {
+  left: 48px;
+  top: -140px;
+  rotate: 3deg;
+  z-index: 2;
+}
+.pcard__shots--a .shot--2 {
+  left: 80px;
+  top: -168px;
+  rotate: -5deg;
+  z-index: 1;
+}
+
+.pcard:hover .pcard__shots--a .shot--1 {
+  transform: translateX(-4px) translateY(12px) rotate(1deg);
+}
+
+.pcard:hover .pcard__shots--a .shot--2 {
+  transform: translateX(2px) translateY(8px) rotate(-2deg);
+}
+
+/* ── Layout B — 1 shot, tilted ── */
+
+.pcard__shots--b .shot--1 {
+  left: 88px;
+  top: -140px;
+  rotate: -3deg;
+  z-index: 2;
+}
+.pcard__shots--b .shot--2 {
+  left: 48px;
+  top: -152px;
+  rotate: 4deg;
+  z-index: 1;
+}
+
+.pcard:hover .pcard__shots--b .shot--1 {
+  transform: translateX(4px) translateY(-8px) rotate(-2deg);
+}
+
+.pcard:hover .pcard__shots--b .shot--2 {
+  transform: translateX(-4px) translateY(4px) rotate(2deg);
+}
+
+/* ── Layout C — 2 shots, fan out ── */
+
+.pcard__shots--c .shot--1 {
+  left: 44px;
+  top: 20px;
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+
+.pcard__shots--c .shot--2 {
+  left: 80px;
+  top: 68px;
+  transform: rotate(7deg);
+  z-index: 1;
+}
+
+.pcard:hover .pcard__shots--c .shot--1 {
+  transform: translateX(-2px) rotate(-5deg) translateY(-10px);
+}
+
+.pcard:hover .pcard__shots--c .shot--2 {
+  transform: translateX(-4px) rotate(9deg) translateY(-12px);
+}
+
+/* ── Layout D — 2 shots, stacked ── */
+
+.pcard__shots--d .shot--1 {
+  left: 84px;
+  top: 24px;
+  rotate: 3deg;
+  z-index: 2;
+}
+
+.pcard__shots--d .shot--2 {
+  left: 44px;
+  top: 48px;
+  rotate: -4deg;
+  z-index: 1;
+}
+
+.pcard:hover .pcard__shots--d .shot--1 {
+  transform: translateX(4px) translateY(-4px) rotate(2deg);
+}
+
+.pcard:hover .pcard__shots--d .shot--2 {
+  transform: translateX(-5px) translateY(5px) rotate(-1deg);
+}
+
+/* ── Web card ── */
+
+.pcard--web .pcard__shots {
+  aspect-ratio: 1.3 / 1;
+}
+
+.pcard--web .shot {
+  width: 560px;
+  height: 340px;
+  border-radius: var(--radius-sm);
+  corner-shape: smooth;
+}
+
+/* Layout A — web, centred */
+
+.pcard--web .pcard__shots--a .shot--1 {
+  top: 8px;
+  left: 92px;
+  rotate: -4deg;
+}
+
+.pcard--web:hover .pcard__shots--a .shot--1 {
+  transform: translate(-16px, -8px) rotate(-2deg);
+}
+
+/* Layout B — web, tilted */
+
+.pcard--web .pcard__shots--b .shot--1 {
+  top: 24px;
+  left: -92px;
+  rotate: -6deg;
+}
+
+.pcard--web:hover .pcard__shots--b .shot--1 {
+  transform: translate(12px, 4px) rotate(2deg);
+}
+
+@media (min-width: 1200px) {
+  .main > * {
+    max-width: 1080px;
+  }
+
+  .pcard {
+    max-width: 352px;
+  }
+
+  .pcard--web {
+    max-width: 534px;
+  }
+}
