@@ -4,7 +4,7 @@ const PRODUCTS = [
     name: "Alias w Ali",
     desc: "Party simple card game",
     url: "",
-    icon: "assets/products/icon_alias.PNG",
+    icon: "assets/products/icon_alias.png",
     shots: [
       "assets/products/alias1.PNG",
       "assets/products/alias2.PNG"
@@ -16,7 +16,7 @@ const PRODUCTS = [
     name: "Mononoise",
     desc: "Mind-calming sounds",
     url: "",
-    icon: "assets/products/icon_mono.PNG",
+    icon: "assets/products/icon_mono.png",
     shots: [
       "assets/products/mononoise1.PNG",
       "assets/products/mononoise2.PNG"
