@@ -41,7 +41,7 @@ const PRODUCTS = [
     name: "Proportion",
     desc: "Simple calculation of ratios",
     url: "",
-    icon: "assets/products/icon_qr.png",
+    icon: "assets/products/icon_proportion.png",
     shots: [
       "assets/products/ratio.png"
     ],
