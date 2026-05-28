@@ -2,8 +2,11 @@ function renderGallery(sections) {
   return sections.map(section => {
     const heading = `<h2 class="h1 gallery-year">${section.years}</h2>`;
     const shots = section.rows.flatMap(row => {
-      const span = 6 / row.length;
-      return row.map(({ src, caption, link }) => {
+      const usedCols = row.reduce((s, shot) => s + (shot.col || 0), 0);
+      const autoCount = row.filter(shot => !shot.col).length;
+      const autoSpan = autoCount ? (6 - usedCols) / autoCount : 0;
+      return row.map(({ src, caption, link, col }) => {
+        const span = col || autoSpan;
         const media = /\.mp4$/i.test(src)
           ? `<video class="shot-img" src="${src}" autoplay muted loop playsinline></video>`
           : `<img class="shot-img" src="${src}" alt="">`;

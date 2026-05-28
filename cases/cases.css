@@ -71,6 +71,12 @@
   flex-shrink: 0;
 }
 
+@media (min-width: 1200px) {
+  .shot-caption-wrap {
+    display: none;
+  }
+}
+
 /* ── SHOT LIGHTBOX ── */
 
 .shot-lightbox {

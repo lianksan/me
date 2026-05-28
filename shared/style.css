@@ -71,6 +71,8 @@ body {
   z-index: 100;
   background: var(--bg);
   box-shadow: inset 0em -1px var(--surface-2);
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 .nav-tabs {
@@ -106,7 +108,7 @@ body {
   bottom: 0px;
   left: 0;
   right: 0;
-  height: 1.8px;
+  height: 2px;
   background: var(--text);
   border-radius: 1px 1px 0px 0px;
 }
