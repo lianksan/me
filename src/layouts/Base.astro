@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import '../styles/typo.css';
+
+interface Props {
+  title: string;
+  activeTab?: string;
+}
+
+const { title, activeTab = '' } = Astro.props;
+
+const tabs = [
+  { href: '/', label: 'About me', id: 'about' },
+  { href: '/cases', label: 'Gallery', id: 'cases' },
+  { href: '/products', label: 'Products', id: 'products' },
+  { href: '/materials', label: 'Saved', id: 'materials' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <script is:inline>
+    (function(){
+      var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-tabs">
+      {tabs.map(tab => (
+        <a href={tab.href} class={`tab h4${activeTab === tab.id ? ' active' : ''}`}>{tab.label}</a>
+      ))}
+    </div>
+  </nav>
+
+  <main class="main">
+    <slot />
+  </main>
+
+  <slot name="after-main" />
+
+</body>
+</html>

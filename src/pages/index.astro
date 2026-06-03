@@ -1,0 +1,251 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/home.css';
+---
+
+<Base title="Liankevich" activeTab="about">
+
+  <!-- About section -->
+  <section id="about" class="section section-about">
+
+    <div class="toggle" id="themeToggle" role="button" aria-label="Switch theme" tabindex="0">
+      <div class="toggle-photo">
+        <img class="photo-light" src="/assets/image_light_mode.png" alt="Paulik Liankevich" />
+        <img class="photo-dark" src="/assets/image_dark_mode.png" alt="Paulik Liankevich" />
+      </div>
+      <div class="toggle-knob">
+        <div class="knob-icon knob-sun" id="lottieSun"></div>
+        <div class="knob-icon knob-moon" id="lottieMoon"></div>
+      </div>
+    </div>
+
+    <h1 class="h1">
+      Software designer<br />Paulik Liankevich
+    </h1>
+
+    <p class="body-text">
+      I mean I'm a UX/UI designer with a penchant for development. Currently based in Vilnius and open for new projects.
+    </p>
+
+    <div class="buttons">
+      <button class="btn" id="emailBtn">
+        <svg class="btn-icon btn-icon--checkmark" width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1L3.66668 7L1.00004 4.00002" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="emailText">p_lenkevich@gmail.com</span>
+        <svg class="btn-icon btn-icon--copy btn-icon--copy-outline" width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 5V4C5 2.34315 6.34315 1 8 1H12C13.6569 1 15 2.34315 15 4V10C15 11.6569 13.6569 13 12 13H11M4 17H8C9.65685 17 11 15.6569 11 14V8C11 6.34315 9.65685 5 8 5H4C2.34315 5 1 6.34315 1 8V14C1 15.6569 2.34315 17 4 17Z" stroke="currentColor" stroke-width="2"/></svg>
+        <svg class="btn-icon btn-icon--copy btn-icon--copy-fill" width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 8C1 6.34315 2.34315 5 4 5H8C9.65685 5 11 6.34315 11 8V14C11 15.6569 9.65685 17 8 17H4C2.34315 17 1 15.6569 1 14V8Z" fill="currentColor"/><path d="M5 5V4C5 2.34315 6.34315 1 8 1H12C13.6569 1 15 2.34315 15 4V10C15 11.6569 13.6569 13 12 13H11M4 17H8C9.65685 17 11 15.6569 11 14V8C11 6.34315 9.65685 5 8 5H4C2.34315 5 1 6.34315 1 8V14C1 15.6569 2.34315 17 4 17Z" stroke="currentColor" stroke-width="2"/></svg>
+      </button>
+      <a href="https://t.me/paulikl" target="_blank" class="btn">
+        Telegram
+        <svg class="btn-icon btn-icon--arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1L1 9M9 1V6.6M9 1H3.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://github.com/paulikl" target="_blank" class="btn">
+        GitHub
+        <svg class="btn-icon btn-icon--arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1L1 9M9 1V6.6M9 1H3.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="https://buymeacoffee.com/paulikl" target="_blank" class="btn">
+        Buy me a coffee
+        <svg class="btn-icon btn-icon--arrow" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1L1 9M9 1V6.6M9 1H3.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Experience section -->
+  <section class="section">
+    <div class="experience-layout">
+      <div class="skills-track">
+        <div class="skills-train">
+          <div class="skill-icon" data-top="0">
+            <img class="icon-light" src="/assets/soft/name=ps.svg" alt="Photoshop">
+            <img class="icon-dark" src="/assets/soft/name=ps-dark.svg" alt="Photoshop">
+          </div>
+          <div class="skill-icon" data-top="5"><img src="/assets/soft/name=html-css.svg" alt="HTML & CSS"></div>
+          <div class="skill-icon" data-top="23"><img src="/assets/soft/name=figma.svg" alt="Figma"></div>
+          <div class="skill-icon" data-top="35">
+            <img class="icon-light" src="/assets/soft/name=after.svg" alt="After Effects">
+            <img class="icon-dark" src="/assets/soft/name=after-dark.svg" alt="After Effects">
+          </div>
+          <div class="skill-icon" data-top="58"><img src="/assets/soft/name=swift.svg" alt="Swift"></div>
+          <div class="skill-icon" data-top="65">
+            <img class="icon-light" src="/assets/soft/name=github.svg" alt="GitHub">
+            <img class="icon-dark" src="/assets/soft/name=github-dark.svg" alt="GitHub">
+          </div>
+          <div class="skill-icon" data-top="90"><img src="/assets/soft/name=claude.svg" alt="Claude"></div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item timeline-item--small">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <h4 class="h4">2016</h4>
+          <p class="body-text">Discovered web design in high school and never looked back.</p>
+        </div>
+
+        <div class="timeline-item timeline-item--small">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <h4 class="h4">2018</h4>
+          <p class="body-text">Went freelance — making websites and graphics for clients.</p>
+        </div>
+
+        <div class="timeline-item timeline-item--large">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <h3 class="h3">2019–2021<br>Web-designer at ***</h3>
+          <p class="body-text">Created landing pages, banners, and marketing materials. Picked up motion design along the way.</p>
+        </div>
+
+        <div class="timeline-item timeline-item--large">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <h3 class="h3">2021–2022<br>UI/UX Designer at ***</h3>
+          <p class="body-text">Designed mobile apps end-to-end — research, prototypes, design systems, and App Store assets.</p>
+        </div>
+
+        <div class="timeline-item timeline-item--small">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <h4 class="h4">2023</h4>
+          <p class="body-text">Started learning Swift and iOS development.</p>
+        </div>
+
+        <div class="timeline-item timeline-item--large">
+          <div class="timeline-dot"></div>
+          <div class="timeline-line"></div>
+          <h3 class="h3">2022–Present<br>UX/UI Designer at <a href="https://wargaming.com" target="_blank" class="text-link">Wargaming</a></h3>
+          <p class="body-text">Designing game UI for World of Tanks — complex systems, live features, millions of players.</p>
+        </div>
+
+        <div class="timeline-item timeline-item--small timeline-item--last">
+          <div class="timeline-dot"></div>
+          <h4 class="h4">2025</h4>
+          <p class="body-text">Shipped <a href="/products" class="text-link">two iOS apps</a> to the App Store on my own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer quote -->
+  <section class="section section-footer">
+    <p class="h2">
+      Here to develop products that make people healthier and more conscious.
+    </p>
+    <video class="footer-video" autoplay loop muted playsinline>
+      <source src="/assets/footer.mp4" type="video/mp4" />
+    </video>
+  </section>
+
+</Base>
+
+<script>
+  import lottie from 'lottie-web';
+
+  // Video autoplay (Safari fix)
+  const footerVideo = document.querySelector('.footer-video') as HTMLVideoElement;
+  if (footerVideo) {
+    footerVideo.muted = true;
+    footerVideo.play().catch(() => {});
+  }
+
+  // Email copy
+  const EMAIL = 'p_lenkevich@gmail.com';
+  const emailBtn = document.getElementById('emailBtn');
+  const emailText = document.getElementById('emailText');
+  if (emailBtn && emailText) {
+    emailBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(EMAIL);
+      emailBtn.style.minWidth = emailBtn.offsetWidth + 'px';
+      emailBtn.classList.add('copied');
+      emailText.textContent = 'Copied';
+      setTimeout(() => {
+        emailText.textContent = EMAIL;
+        emailBtn.classList.remove('copied');
+        emailBtn.style.minWidth = '';
+      }, 3000);
+    });
+  }
+
+  // Theme
+  const html = document.documentElement;
+
+  function switchTheme() {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+
+  const toggle = document.getElementById('themeToggle');
+
+  const sunContainer = document.getElementById('lottieSun');
+  const moonContainer = document.getElementById('lottieMoon');
+
+  const sunAnim = sunContainer
+    ? lottie.loadAnimation({
+        container: sunContainer,
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        path: '/assets/sun.json',
+      })
+    : null;
+
+  const moonAnim = moonContainer
+    ? lottie.loadAnimation({
+        container: moonContainer,
+        renderer: 'svg',
+        loop: true,
+        autoplay: false,
+        path: '/assets/moon.json',
+      })
+    : null;
+
+  if (toggle) {
+    toggle.addEventListener('mouseenter', () => {
+      sunAnim?.play();
+      moonAnim?.play();
+    });
+    toggle.addEventListener('mouseleave', () => {
+      sunAnim?.pause();
+      moonAnim?.pause();
+    });
+    toggle.addEventListener('click', switchTheme);
+    toggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        switchTheme();
+      }
+    });
+  }
+
+  // Skills scroll animation
+  (function () {
+    const train = document.querySelector('.skills-train') as HTMLElement;
+    const timeline = document.querySelector('.timeline') as HTMLElement;
+    const icons = document.querySelectorAll('.skill-icon') as NodeListOf<HTMLElement>;
+    if (!train || !timeline || !icons.length) return;
+
+    const ICON_SIZE = 44;
+    const GAP = 4;
+    const SLOT = ICON_SIZE + GAP;
+
+    function onScroll() {
+      const trainRect = train.getBoundingClientRect();
+      const timelineRect = timeline.getBoundingClientRect();
+
+      icons.forEach((icon, i) => {
+        const topPct = parseFloat(icon.dataset.top!) / 100;
+        const targetY = timelineRect.top + topPct * timelineRect.height;
+        const slotY = trainRect.top + i * SLOT;
+
+        icon.style.transform =
+          targetY > slotY
+            ? `translateY(${targetY - slotY}px)`
+            : 'translateY(0)';
+      });
+    }
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  })();
+</script>

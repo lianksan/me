@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import '../styles/products.css';
+import { PRODUCTS } from '../data/products';
+
+const iosProducts = PRODUCTS.filter(p => p.section === 'ios');
+const webProducts = PRODUCTS.filter(p => p.section === 'web');
+
+const ARROW_SVG = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 1L1 9M9 1V6.6M9 1H3.4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+---
+
+<Base title="Products" activeTab="products">
+
+  <div class="products-block">
+    <h2 class="h1">iOS applications</h2>
+    <div class="products-grid">
+      {iosProducts.map(p => {
+        const shotsFirst = p.section === 'ios' && (p.layout === 'A' || p.layout === 'B');
+        const extraClass = p.section === 'web' ? ' pcard--web' : '';
+        return (
+          <a href={p.url} target="_blank" class={`pcard${extraClass}`}>
+            {shotsFirst && (
+              <div class={`pcard__shots pcard__shots--${p.layout.toLowerCase()}`}>
+                {p.shots.map((src, i) => (
+                  <img class={`shot shot--${i + 1}`} src={src} alt="screenshot" />
+                ))}
+              </div>
+            )}
+            <div class="pcard__top">
+              <div class="pcard__icon">
+                {p.icon && <img src={p.icon} alt={`${p.name} icon`} />}
+              </div>
+              <div class="pcard__text">
+                <div class="pcard__name h3">
+                  <Fragment set:html={`${p.name} ${ARROW_SVG}`} />
+                </div>
+                <div class="pcard__desc body-text">{p.desc}</div>
+              </div>
+            </div>
+            {!shotsFirst && (
+              <div class={`pcard__shots pcard__shots--${p.layout.toLowerCase()}`}>
+                {p.shots.map((src, i) => (
+                  <img class={`shot shot--${i + 1}`} src={src} alt="screenshot" />
+                ))}
+              </div>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  </div>
+
+  <div class="products-block">
+    <h2 class="h1">Web services</h2>
+    <div class="products-grid">
+      {webProducts.map(p => {
+        const extraClass = ' pcard--web';
+        return (
+          <a href={p.url} target="_blank" class={`pcard${extraClass}`}>
+            <div class="pcard__top">
+              <div class="pcard__icon">
+                {p.icon && <img src={p.icon} alt={`${p.name} icon`} />}
+              </div>
+              <div class="pcard__text">
+                <div class="pcard__name h3">
+                  <Fragment set:html={`${p.name} ${ARROW_SVG}`} />
+                </div>
+                <div class="pcard__desc body-text">{p.desc}</div>
+              </div>
+            </div>
+            <div class={`pcard__shots pcard__shots--${p.layout.toLowerCase()}`}>
+              {p.shots.map((src, i) => (
+                <img class={`shot shot--${i + 1}`} src={src} alt="screenshot" />
+              ))}
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+
+</Base>

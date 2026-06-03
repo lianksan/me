@@ -18,7 +18,7 @@
   width: 100%;
   background: var(--surface);
   border-radius: var(--radius-lg);
-  corner-shape: smooth; /* squircle */
+  corner-shape: smooth;
   overflow: hidden;
   text-decoration: none;
   color: var(--text);

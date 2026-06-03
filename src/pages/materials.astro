@@ -1,7 +1,25 @@
-(function () {
-  const canvas = document.getElementById('gameCanvas');
-  const ctx = canvas.getContext('2d');
-  const wrap = document.getElementById('gameWrap');
+---
+import Base from '../layouts/Base.astro';
+import '../styles/materials.css';
+---
+
+<Base title="Saved — Liankevich" activeTab="materials">
+
+  <section class="section section-saved">
+    <h1 class="h1 saved-title">It's empty for now</h1>
+    <p class="body saved-desc">Over time, I will add my recommendations and various<br>materials on design and more here.</p>
+  </section>
+
+  <div slot="after-main" class="game-wrap" id="gameWrap">
+    <canvas id="gameCanvas"></canvas>
+  </div>
+
+</Base>
+
+<script>
+  const canvas = document.getElementById('gameCanvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  const wrap = document.getElementById('gameWrap')!;
 
   const CH = 240;
   const GROUND = 196;
@@ -13,12 +31,12 @@
   let CW = 0;
   const DPR = window.devicePixelRatio || 1;
 
-  let state = 'idle'; // idle | run | dead
+  let state: 'idle' | 'run' | 'dead' = 'idle';
   let frame = 0, score = 0;
-  let hiScore = +localStorage.getItem('dsbHi') || 0;
+  let hiScore = +(localStorage.getItem('dsbHi') || 0);
 
   let bY = GROUND - BUSH_R, bVY = 0, bGround = true, bRot = 0;
-  let cacti = [], cTimer = 0, cNext = 80;
+  let cacti: { x: number; h: number }[] = [], cTimer = 0, cNext = 80;
   let deadTimer = 0, idleT = 0;
 
   function speed() { return 5.5 + Math.min(frame / 500, 7); }
@@ -33,9 +51,9 @@
   }
 
   const ballImg = new Image();
-  ballImg.src = 'assets/empty-ball.svg';
+  ballImg.src = '/assets/empty-ball.svg';
 
-  function cssVar(v) {
+  function cssVar(v: string) {
     return getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   }
   function dark() {
@@ -61,13 +79,13 @@
     cNext = Math.max(35, 55 + Math.random() * 55 - speed() * 2.5);
   }
 
-  function fRR(x, y, w, h, r) {
+  function fRR(x: number, y: number, w: number, h: number, r: number) {
     ctx.beginPath();
     ctx.roundRect(x, y, w, h, r);
     ctx.fill();
   }
 
-  function drawBush(cx, cy) {
+  function drawBush(cx: number, cy: number) {
     const R = BUSH_R;
     ctx.save();
     ctx.translate(cx, cy);
@@ -78,7 +96,7 @@
     ctx.restore();
   }
 
-  function drawCactus(cx, h) {
+  function drawCactus(cx: number, h: number) {
     ctx.fillStyle = dark() ? '#7A9C58' : '#698A48';
     const BW = 13, GY = GROUND, top = GY - h, bx = cx - BW / 2;
 
@@ -104,7 +122,7 @@
     return false;
   }
 
-  function centeredText(text, y, size, alpha, weight) {
+  function centeredText(text: string, y: number, size: number, alpha: number, weight: string) {
     ctx.fillStyle = cssVar('--text');
     ctx.globalAlpha = alpha;
     ctx.font = `${weight} ${size}px 'Inter', sans-serif`;
@@ -139,7 +157,7 @@
         state = 'dead'; deadTimer = 0;
         if (Math.floor(score) > hiScore) {
           hiScore = Math.floor(score);
-          localStorage.setItem('dsbHi', hiScore);
+          localStorage.setItem('dsbHi', String(hiScore));
         }
       }
     }
@@ -186,13 +204,13 @@
     requestAnimationFrame(tick);
   }
 
-  window.addEventListener('keydown', e => {
+  window.addEventListener('keydown', (e) => {
     if (e.code === 'Space' || e.code === 'ArrowUp') { e.preventDefault(); jump(); }
   });
   canvas.addEventListener('click', jump);
-  canvas.addEventListener('touchstart', e => { e.preventDefault(); jump(); }, { passive: false });
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); jump(); }, { passive: false });
   window.addEventListener('resize', resize);
 
   resize();
   requestAnimationFrame(tick);
-})();
+</script>
