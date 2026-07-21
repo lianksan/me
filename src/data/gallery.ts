@@ -15,10 +15,13 @@ export const GALLERY: GallerySection[] = [
   {
     years: '2026–2025',
     rows: [
+      [{ src: '/assets/shots/wot_bg_chapter_ selector.png' }],
+      [{ src: '/assets/shots/wot_bg_purchasing.png' }],
       [
         { src: '/assets/shots/ufl-1.mp4', caption: 'text text tex' },
         { src: '/assets/shots/ufl-2.mp4', caption: 'text text tex text text tex text text tex text text tex text text tex text text tex text text tex ' },
       ],
+      [{ src: '/assets/shots/wot_lootboxes.png' }],
       [{ src: '/assets/shots/qr-machine.mp4' }],
     ],
   },

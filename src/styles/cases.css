@@ -83,42 +83,31 @@
   position: fixed;
   inset: 0;
   background: var(--bg);
-  display: none;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
   z-index: 1000;
 }
 
-@media (min-width: 768px) {
-  .shot-lightbox {
-    display: flex;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .shot-lightbox.visible {
-    opacity: 1;
-    pointer-events: auto;
-    cursor: zoom-out;
-  }
+.shot-lightbox.visible {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: zoom-out;
 }
 
 .shot-lightbox-main {
   position: fixed;
-  left: 152px;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
   pointer-events: none;
 }
 
 .shot-lightbox-media img,
 .shot-lightbox-media video {
-  max-width: calc(100vw - 152px - 32px);
+  max-width: calc(100vw - 176px);
   max-height: 80vh;
   border-radius: var(--radius-sm);
   corner-shape: smooth;
@@ -127,32 +116,12 @@
   pointer-events: auto;
 }
 
-.shot-lightbox-caption {
-  color: var(--text);
-  text-align: center;
-  max-width: 480px;
-  pointer-events: auto;
-}
+/* ── SHOT ARROWS ── */
 
-/* ── SHOT SLIDER ── */
-
-.shot-lightbox-slider {
+.shot-arrow {
   position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 16px;
-  box-sizing: border-box;
-  z-index: 1001;
-  box-shadow: inset -1px 0 var(--surface-2);
-}
-
-.shot-slider-arrow {
+  top: 50%;
+  transform: translateY(-50%);
   width: 72px;
   height: 48px;
   border: none;
@@ -164,115 +133,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  z-index: 1001;
 }
 
-.shot-slider-arrow:hover {
+.shot-arrow--prev { left: 16px; }
+.shot-arrow--next { right: 16px; }
+
+.shot-arrow:hover {
   background: var(--text);
   color: var(--bg);
 }
 
-.shot-slider-arrow svg {
-  width: 16px;
-  height: 8px;
+.shot-arrow svg {
+  width: 8px;
+  height: 16px;
   overflow: visible;
 }
 
-.shot-slider-thumbs {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  flex: 1;
-  min-height: 0;
-  padding: 2px;
-  scrollbar-width: none;
-}
+@media (max-width: 767px) {
+  .shot-lightbox-media img,
+  .shot-lightbox-media video {
+    max-width: calc(100vw - 32px);
+  }
 
-.shot-slider-thumbs::-webkit-scrollbar {
-  display: none;
-}
+  .shot-arrow {
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
 
-.shot-slider-scrollbar {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 7px;
-  cursor: pointer;
-}
-
-.shot-slider-scrollbar::before {
-  content: '';
-  position: absolute;
-  right: 2px;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  border-radius: 1.5px;
-  background: var(--surface-2);
-}
-
-.shot-slider-scrollbar-thumb {
-  position: absolute;
-  right: 2px;
-  top: 0;
-  width: 3px;
-  border-radius: 1.5px;
-  background: color-mix(in srgb, var(--text) 50%, transparent);
-  transition: top 0.15s ease, width 0.1s ease, right 0.1s ease;
-}
-
-.shot-slider-scrollbar:hover .shot-slider-scrollbar-thumb,
-.shot-slider-scrollbar.dragging .shot-slider-scrollbar-thumb {
-  width: 7px;
-  right: 0;
-}
-
-.shot-slider-scrollbar:hover::before,
-.shot-slider-scrollbar.dragging::before {
-  width: 7px;
-  right: 0;
-}
-
-.shot-slider-thumb {
-  width: 120px;
-  border-radius: 8px;
-  corner-shape: smooth;
-  overflow: hidden;
-  cursor: pointer;
-  flex-shrink: 0;
-  opacity: 0.6;
-  outline: 2px solid transparent;
-  transition: opacity 0.15s ease, outline-color 0.15s ease;
-}
-
-.shot-slider-thumb:hover {
-  opacity: 0.7;
-}
-
-.shot-slider-thumb.active {
-  opacity: 1;
-  outline-color: var(--text);
-}
-
-.shot-slider-thumb img,
-.shot-slider-thumb video {
-  width: 100%;
-  max-height: calc(120px * 4 / 3);
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  pointer-events: none;
-}
-
-.shot-slider-year {
-  width: 120px;
-  flex-shrink: 0;
-  color: var(--text);
-  text-align: left;
-  padding: 6px 0;
+  .shot-arrow--prev { left: auto; right: calc(50% + 4px); }
+  .shot-arrow--next { left: calc(50% + 4px); right: auto; }
 }
 
 @media (max-width: 1199px) {

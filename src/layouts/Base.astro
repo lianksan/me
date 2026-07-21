@@ -5,9 +5,10 @@ import '../styles/typo.css';
 interface Props {
   title: string;
   activeTab?: string;
+  hideNavOnScroll?: boolean;
 }
 
-const { title, activeTab = '' } = Astro.props;
+const { title, activeTab = '', hideNavOnScroll = false } = Astro.props;
 
 const tabs = [
   { href: '/', label: 'About me', id: 'about' },
@@ -36,7 +37,7 @@ const tabs = [
 </head>
 <body>
 
-  <nav class="nav">
+  <nav class="nav" data-hide-on-scroll={hideNavOnScroll ? "true" : undefined}>
     <div class="nav-tabs">
       {tabs.map(tab => (
         <a href={tab.href} class={`tab h4${activeTab === tab.id ? ' active' : ''}`}>{tab.label}</a>
@@ -49,6 +50,22 @@ const tabs = [
   </main>
 
   <slot name="after-main" />
+
+  <script>
+    const nav = document.querySelector('.nav[data-hide-on-scroll]');
+    if (nav) {
+      let lastY = window.scrollY;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (y > lastY && y > 48) {
+          nav.classList.add('nav-hidden');
+        } else if (y < lastY) {
+          nav.classList.remove('nav-hidden');
+        }
+        lastY = y;
+      }, { passive: true });
+    }
+  </script>
 
 </body>
 </html>

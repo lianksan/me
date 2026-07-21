@@ -4,7 +4,7 @@ import '../styles/cases.css';
 import { GALLERY } from '../data/gallery';
 ---
 
-<Base title="Gallery" activeTab="cases">
+<Base title="Gallery" activeTab="cases" hideNavOnScroll>
 
   <div id="gallery">
     {GALLERY.map(section => (
@@ -51,22 +51,15 @@ import { GALLERY } from '../data/gallery';
 
   <!-- Lightbox -->
   <div class="shot-lightbox" id="shotLightbox">
-    <div class="shot-lightbox-slider" id="shotSlider">
-      <button class="shot-slider-arrow shot-slider-arrow--up" id="sliderArrowUp">
-        <svg width="16" height="8" viewBox="0 0 16 8" fill="none"><path d="M14 7L8 1L2 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="shot-slider-thumbs" id="sliderThumbs"></div>
-      <button class="shot-slider-arrow shot-slider-arrow--down" id="sliderArrowDown">
-        <svg width="16" height="8" viewBox="0 0 16 8" fill="none"><path d="M2 1L8 7L14 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="shot-slider-scrollbar" id="sliderScrollbar">
-        <div class="shot-slider-scrollbar-thumb" id="sliderScrollbarThumb"></div>
-      </div>
-    </div>
     <div class="shot-lightbox-main">
       <div class="shot-lightbox-media" id="shotLightboxMedia"></div>
-      <div class="shot-lightbox-caption" id="shotLightboxCaption"></div>
     </div>
+    <button class="shot-arrow shot-arrow--prev" id="arrowPrev" aria-label="Previous">
+      <svg width="8" height="16" viewBox="0 0 8 16" fill="none"><path d="M7 1L1 8L7 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="shot-arrow shot-arrow--next" id="arrowNext" aria-label="Next">
+      <svg width="8" height="16" viewBox="0 0 8 16" fill="none"><path d="M1 1L7 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
   </div>
 
 </Base>
@@ -74,53 +67,11 @@ import { GALLERY } from '../data/gallery';
 <script>
   const lightbox = document.getElementById('shotLightbox')!;
   const mediaEl = document.getElementById('shotLightboxMedia')!;
-  const captionEl = document.getElementById('shotLightboxCaption')!;
-  const slider = document.getElementById('shotSlider')!;
-  const thumbsContainer = document.getElementById('sliderThumbs')!;
-  const arrowUp = document.getElementById('sliderArrowUp')!;
-  const arrowDown = document.getElementById('sliderArrowDown')!;
+  const arrowPrev = document.getElementById('arrowPrev')!;
+  const arrowNext = document.getElementById('arrowNext')!;
   const wraps = Array.from(document.querySelectorAll('.shot-wrap'));
   let current = -1;
   let savedScrollY = 0;
-
-  let lastYears = '';
-  wraps.forEach((wrap, i) => {
-    const years = (wrap as HTMLElement).dataset.years!;
-    if (years !== lastYears) {
-      const label = document.createElement('div');
-      label.className = 'shot-slider-year';
-      label.textContent = years;
-      thumbsContainer.appendChild(label);
-      lastYears = years;
-    }
-
-    const asset = wrap.querySelector('.shot-img') as HTMLMediaElement;
-    const src = (asset as HTMLVideoElement).src || (asset as HTMLImageElement).currentSrc || asset.getAttribute('src') || '';
-    const isVideo = /\.mp4$/i.test(src);
-    const thumb = document.createElement('div');
-    thumb.className = 'shot-slider-thumb';
-    if (isVideo) {
-      const vid = document.createElement('video');
-      vid.src = src;
-      vid.muted = true;
-      vid.playsInline = true;
-      vid.preload = 'metadata';
-      vid.addEventListener('loadedmetadata', () => { vid.currentTime = 0.001; });
-      thumb.appendChild(vid);
-    } else {
-      thumb.innerHTML = `<img src="${src}" alt="">`;
-    }
-    thumb.addEventListener('click', (e) => { e.stopPropagation(); showShot(i); });
-    thumbsContainer.appendChild(thumb);
-  });
-
-  const thumbEls = Array.from(thumbsContainer.querySelectorAll('.shot-slider-thumb'));
-
-  function updateThumbs() {
-    thumbEls.forEach((el, i) => el.classList.toggle('active', i === current));
-    const active = thumbEls[current];
-    if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }
 
   function showShot(index: number) {
     const isFirstOpen = !lightbox.classList.contains('visible');
@@ -137,13 +88,8 @@ import { GALLERY } from '../data/gallery';
       ? `<video src="${src}" autoplay muted loop playsinline></video>`
       : `<img src="${src}" alt="">`;
 
-    const caption = wrap.dataset.caption;
-    captionEl.textContent = caption || '';
-    captionEl.style.display = caption ? '' : 'none';
-
     lightbox.offsetHeight;
     lightbox.classList.add('visible');
-    updateThumbs();
   }
 
   function close() {
@@ -151,81 +97,16 @@ import { GALLERY } from '../data/gallery';
     current = -1;
     document.body.style.overflow = '';
     window.scrollTo({ top: savedScrollY, behavior: 'instant' as ScrollBehavior });
-    setTimeout(() => { mediaEl.innerHTML = ''; captionEl.textContent = ''; }, 200);
+    setTimeout(() => { mediaEl.innerHTML = ''; }, 200);
   }
 
   lightbox.addEventListener('click', close);
-  slider.addEventListener('click', (e) => e.stopPropagation());
 
-  arrowUp.addEventListener('click', (e) => { e.stopPropagation(); if (current > -1) showShot(current - 1); });
-  arrowDown.addEventListener('click', (e) => { e.stopPropagation(); if (current > -1) showShot(current + 1); });
+  arrowPrev.addEventListener('click', (e) => { e.stopPropagation(); if (current > -1) showShot(current - 1); });
+  arrowNext.addEventListener('click', (e) => { e.stopPropagation(); if (current > -1) showShot(current + 1); });
 
   wraps.forEach((el, i) => {
-    el.addEventListener('click', () => {
-      if (window.innerWidth >= 768) showShot(i);
-    });
-  });
-
-  // Custom scrollbar
-  const scrollbar = document.getElementById('sliderScrollbar')!;
-  const scrollbarThumb = document.getElementById('sliderScrollbarThumb')!;
-
-  function updateScrollbar() {
-    const el = thumbsContainer;
-    const scrollH = el.scrollHeight;
-    const clientH = el.clientHeight;
-    if (scrollH <= clientH) {
-      scrollbar.style.display = 'none';
-      return;
-    }
-    scrollbar.style.display = '';
-    const trackH = scrollbar.clientHeight;
-    const ratio = clientH / scrollH;
-    const thumbH = Math.max(ratio * trackH, 20);
-    const maxScroll = scrollH - clientH;
-    const scrollRatio = el.scrollTop / maxScroll;
-    const thumbTop = scrollRatio * (trackH - thumbH);
-    scrollbarThumb.style.height = thumbH + 'px';
-    scrollbarThumb.style.top = thumbTop + 'px';
-  }
-
-  thumbsContainer.addEventListener('scroll', updateScrollbar);
-  new ResizeObserver(updateScrollbar).observe(thumbsContainer);
-
-  // Draggable scrollbar
-  let dragging = false;
-  let dragStartY = 0;
-  let dragStartScroll = 0;
-
-  scrollbar.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    dragging = true;
-    scrollbar.classList.add('dragging');
-    dragStartY = e.clientY;
-    dragStartScroll = thumbsContainer.scrollTop;
-    document.body.style.cursor = 'grabbing';
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!dragging) return;
-    const el = thumbsContainer;
-    const trackH = scrollbar.clientHeight;
-    const ratio = el.clientHeight / el.scrollHeight;
-    const thumbH = Math.max(ratio * trackH, 20);
-    const maxThumbTop = trackH - thumbH;
-    const maxScroll = el.scrollHeight - el.clientHeight;
-    const dy = e.clientY - dragStartY;
-    const scrollDelta = (dy / maxThumbTop) * maxScroll;
-    el.scrollTop = dragStartScroll + scrollDelta;
-  });
-
-  window.addEventListener('mouseup', () => {
-    if (dragging) {
-      dragging = false;
-      scrollbar.classList.remove('dragging');
-      document.body.style.cursor = '';
-    }
+    el.addEventListener('click', () => showShot(i));
   });
 
   document.addEventListener('keydown', (e) => {
