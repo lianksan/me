@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/base';
 import '../styles/cases.css';
 import { GALLERY } from '../data/gallery';
 ---
@@ -26,8 +27,8 @@ import { GALLERY } from '../data/gallery';
                   data-years={section.years}
                 >
                   {isVideo
-                    ? <video class="shot-img" src={shot.src} autoplay muted loop playsinline></video>
-                    : <img class="shot-img" src={shot.src} alt="" />
+                    ? <video class="shot-img" src={withBase(shot.src)} autoplay muted loop playsinline></video>
+                    : <img class="shot-img" src={withBase(shot.src)} alt="" />
                   }
                   {shot.caption && (
                     <div class="shot-caption-wrap">

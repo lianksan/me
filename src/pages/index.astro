@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/base';
 import '../styles/home.css';
 ---
 
@@ -10,8 +11,8 @@ import '../styles/home.css';
 
     <div class="toggle" id="themeToggle" role="button" aria-label="Switch theme" tabindex="0">
       <div class="toggle-photo">
-        <img class="photo-light" src="/assets/image_light_mode.png" alt="Paulik Liankevich" />
-        <img class="photo-dark" src="/assets/image_dark_mode.png" alt="Paulik Liankevich" />
+        <img class="photo-light" src={withBase('/assets/image_light_mode.png')} alt="Paulik Liankevich" />
+        <img class="photo-dark" src={withBase('/assets/image_dark_mode.png')} alt="Paulik Liankevich" />
       </div>
       <div class="toggle-knob">
         <div class="knob-icon knob-sun" id="lottieSun"></div>
@@ -55,21 +56,21 @@ import '../styles/home.css';
       <div class="skills-track">
         <div class="skills-train">
           <div class="skill-icon" data-top="0">
-            <img class="icon-light" src="/assets/soft/name=ps.svg" alt="Photoshop">
-            <img class="icon-dark" src="/assets/soft/name=ps-dark.svg" alt="Photoshop">
+            <img class="icon-light" src={withBase('/assets/soft/name=ps.svg')} alt="Photoshop">
+            <img class="icon-dark" src={withBase('/assets/soft/name=ps-dark.svg')} alt="Photoshop">
           </div>
-          <div class="skill-icon" data-top="5"><img src="/assets/soft/name=html-css.svg" alt="HTML & CSS"></div>
-          <div class="skill-icon" data-top="23"><img src="/assets/soft/name=figma.svg" alt="Figma"></div>
+          <div class="skill-icon" data-top="5"><img src={withBase('/assets/soft/name=html-css.svg')} alt="HTML & CSS"></div>
+          <div class="skill-icon" data-top="23"><img src={withBase('/assets/soft/name=figma.svg')} alt="Figma"></div>
           <div class="skill-icon" data-top="35">
-            <img class="icon-light" src="/assets/soft/name=after.svg" alt="After Effects">
-            <img class="icon-dark" src="/assets/soft/name=after-dark.svg" alt="After Effects">
+            <img class="icon-light" src={withBase('/assets/soft/name=after.svg')} alt="After Effects">
+            <img class="icon-dark" src={withBase('/assets/soft/name=after-dark.svg')} alt="After Effects">
           </div>
-          <div class="skill-icon" data-top="58"><img src="/assets/soft/name=swift.svg" alt="Swift"></div>
+          <div class="skill-icon" data-top="58"><img src={withBase('/assets/soft/name=swift.svg')} alt="Swift"></div>
           <div class="skill-icon" data-top="65">
-            <img class="icon-light" src="/assets/soft/name=github.svg" alt="GitHub">
-            <img class="icon-dark" src="/assets/soft/name=github-dark.svg" alt="GitHub">
+            <img class="icon-light" src={withBase('/assets/soft/name=github.svg')} alt="GitHub">
+            <img class="icon-dark" src={withBase('/assets/soft/name=github-dark.svg')} alt="GitHub">
           </div>
-          <div class="skill-icon" data-top="90"><img src="/assets/soft/name=claude.svg" alt="Claude"></div>
+          <div class="skill-icon" data-top="90"><img src={withBase('/assets/soft/name=claude.svg')} alt="Claude"></div>
         </div>
       </div>
 
@@ -119,7 +120,7 @@ import '../styles/home.css';
         <div class="timeline-item timeline-item--small timeline-item--last">
           <div class="timeline-dot"></div>
           <h4 class="h4">2025</h4>
-          <p class="body-text">Shipped <a href="/products" class="text-link">two iOS apps</a> to the App Store on my own.</p>
+          <p class="body-text">Shipped <a href={withBase('/products')} class="text-link">two iOS apps</a> to the App Store on my own.</p>
         </div>
       </div>
     </div>
@@ -131,7 +132,7 @@ import '../styles/home.css';
       Here to develop products that make people healthier and more conscious.
     </p>
     <video class="footer-video" autoplay loop muted playsinline>
-      <source src="/assets/footer.mp4" type="video/mp4" />
+      <source src={withBase('/assets/footer.mp4')} type="video/mp4" />
     </video>
   </section>
 
@@ -139,6 +140,7 @@ import '../styles/home.css';
 
 <script>
   import lottie from 'lottie-web';
+  import { withBase } from '../lib/base';
 
   // Video autoplay (Safari fix)
   const footerVideo = document.querySelector('.footer-video') as HTMLVideoElement;
@@ -185,7 +187,7 @@ import '../styles/home.css';
         renderer: 'svg',
         loop: true,
         autoplay: false,
-        path: '/assets/sun.json',
+        path: withBase('/assets/sun.json'),
       })
     : null;
 
@@ -195,7 +197,7 @@ import '../styles/home.css';
         renderer: 'svg',
         loop: true,
         autoplay: false,
-        path: '/assets/moon.json',
+        path: withBase('/assets/moon.json'),
       })
     : null;
 

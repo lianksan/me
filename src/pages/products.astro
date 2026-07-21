@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/base';
 import '../styles/products.css';
 import { PRODUCTS } from '../data/products';
 
@@ -22,13 +23,13 @@ const ARROW_SVG = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" x
             {shotsFirst && (
               <div class={`pcard__shots pcard__shots--${p.layout.toLowerCase()}`}>
                 {p.shots.map((src, i) => (
-                  <img class={`shot shot--${i + 1}`} src={src} alt="screenshot" />
+                  <img class={`shot shot--${i + 1}`} src={withBase(src)} alt="screenshot" />
                 ))}
               </div>
             )}
             <div class="pcard__top">
               <div class="pcard__icon">
-                {p.icon && <img src={p.icon} alt={`${p.name} icon`} />}
+                {p.icon && <img src={withBase(p.icon)} alt={`${p.name} icon`} />}
               </div>
               <div class="pcard__text">
                 <div class="pcard__name h3">
@@ -40,7 +41,7 @@ const ARROW_SVG = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" x
             {!shotsFirst && (
               <div class={`pcard__shots pcard__shots--${p.layout.toLowerCase()}`}>
                 {p.shots.map((src, i) => (
-                  <img class={`shot shot--${i + 1}`} src={src} alt="screenshot" />
+                  <img class={`shot shot--${i + 1}`} src={withBase(src)} alt="screenshot" />
                 ))}
               </div>
             )}
@@ -59,7 +60,7 @@ const ARROW_SVG = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" x
           <a href={p.url} target="_blank" class={`pcard${extraClass}`}>
             <div class="pcard__top">
               <div class="pcard__icon">
-                {p.icon && <img src={p.icon} alt={`${p.name} icon`} />}
+                {p.icon && <img src={withBase(p.icon)} alt={`${p.name} icon`} />}
               </div>
               <div class="pcard__text">
                 <div class="pcard__name h3">
@@ -70,7 +71,7 @@ const ARROW_SVG = `<svg width="10" height="10" viewBox="0 0 10 10" fill="none" x
             </div>
             <div class={`pcard__shots pcard__shots--${p.layout.toLowerCase()}`}>
               {p.shots.map((src, i) => (
-                <img class={`shot shot--${i + 1}`} src={src} alt="screenshot" />
+                <img class={`shot shot--${i + 1}`} src={withBase(src)} alt="screenshot" />
               ))}
             </div>
           </a>

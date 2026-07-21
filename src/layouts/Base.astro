@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import '../styles/typo.css';
+import { withBase } from '../lib/base';
 
 interface Props {
   title: string;
@@ -23,7 +24,7 @@ const tabs = [
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="icon" type="image/png" href={withBase('/assets/favicon.png')} />
   <script is:inline>
     (function(){
       var t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -40,7 +41,7 @@ const tabs = [
   <nav class="nav" data-hide-on-scroll={hideNavOnScroll ? "true" : undefined}>
     <div class="nav-tabs">
       {tabs.map(tab => (
-        <a href={tab.href} class={`tab h4${activeTab === tab.id ? ' active' : ''}`}>{tab.label}</a>
+        <a href={withBase(tab.href)} class={`tab h4${activeTab === tab.id ? ' active' : ''}`}>{tab.label}</a>
       ))}
     </div>
   </nav>
