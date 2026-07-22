@@ -1,7 +1,5 @@
 export interface Shot {
   src: string;
-  caption?: string;
-  link?: string;
   col?: number;
   desktopOnly?: boolean;
 }
@@ -18,8 +16,8 @@ export const GALLERY: GallerySection[] = [
       [{ src: '/assets/shots/wot_bg_chapter_ selector.png' }],
       [{ src: '/assets/shots/wot_bg_purchasing.png' }],
       [
-        { src: '/assets/shots/ufl-1.mp4', caption: 'text text tex' },
-        { src: '/assets/shots/ufl-2.mp4', caption: 'text text tex text text tex text text tex text text tex text text tex text text tex text text tex ' },
+        { src: '/assets/shots/ufl-1.mp4' },
+        { src: '/assets/shots/ufl-2.mp4' },
       ],
       [{ src: '/assets/shots/wot_lootboxes.png' }],
       [{ src: '/assets/shots/qr-machine.mp4' }],
@@ -29,7 +27,7 @@ export const GALLERY: GallerySection[] = [
     years: '2024–2022',
     rows: [
       [
-        { src: '/assets/shots/lottie_eco.mp4', caption: 'Eco-themed Lottie icons pack' },
+        { src: '/assets/shots/lottie_eco.mp4' },
         { src: '/assets/shots/lottie_eco_sketch.png', col: 2 },
       ],
       [{ src: '/assets/shots/lottie_logos.mp4' }, { src: '/assets/shots/lottie_weather.mp4' }],

@@ -42,41 +42,6 @@
   box-shadow: 0 0 0 1px var(--surface-2);
 }
 
-.shot-caption-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-top: 8px;
-}
-
-.shot-caption {
-  color: var(--text);
-}
-
-.shot-link {
-  color: var(--text);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.15s ease;
-}
-
-.shot-link:hover {
-  color: var(--text);
-}
-
-.shot-link svg {
-  flex-shrink: 0;
-}
-
-@media (min-width: 1200px) {
-  .shot-caption-wrap {
-    display: none;
-  }
-}
-
 /* ── SHOT LIGHTBOX ── */
 
 .shot-lightbox {
